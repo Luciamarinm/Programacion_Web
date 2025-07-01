@@ -1,0 +1,75 @@
+.carousel-item img {
+    height: 600px; 
+    object-fit: cover;
+    width: 100%;
+} 
+.mx-extra {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+@media (min-width: 576px) {
+  .mx-extra {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+  
+@media (min-width: 768px) {
+  .mx-extra {
+    margin-left: 70px;
+    margin-right: 70px;
+  }
+}
+  
+@media (min-width: 992px) {
+  .mx-extra {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+@media (min-width: 1800px) {
+  .mx-extra {
+    margin-left: 450px;
+    margin-right: 450px;
+  }
+}
+
+.hInicio {
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2b4ba1;
+  text-align: center;
+}
+
+.hIzquierda {
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2b4ba1;
+  text-align: left;
+}
+.hDerecha {
+  margin-top: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #2b4ba1;
+  text-align: right;
+}
+.imgIzquierda {
+  margin-top: 50px;
+  width: 40%;
+  float: left;
+  margin-right: 20px; 
+}
+.imgDerecha {
+  margin-top: 50px;
+  width: 40%;
+  float: right;
+  margin-left: 20px; 
+}
+.bloque {
+  overflow: hidden;
+  margin-bottom: 40px; 
+}
+.margenDerecha {
+  margin-right: 150px;
+}

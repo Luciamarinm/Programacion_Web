@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+body {
+    background: linear-gradient(
+        90deg,
+        rgba(198, 248, 253, 1) 25%,
+        rgba(231, 254, 242, 1) 75%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-principal {
+    flex: 1;
+}
+.contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    min-height: 60px;
+}
+
+.fondo {
+    padding: 32px 0;
+    background-color: #2b4ba1;
+}
+
+.menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    height: 60px;
+}
+
+.logo {
+    width: 160px;  
+    height: 50px;
+    display: block;
+}
+
+.menu .navBarra li{
+    position: relative;
+    float: left;
+}
+a, a:visited, a:hover, a:active {
+    text-decoration: none !important;
+}
+.texto {
+    font-size: 18px;
+    padding: 5px;
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none !important;
+}
+.menu .navBarra li a{
+    font-size: 18px;
+    padding: 20px;
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none !important;
+}
+.menu .navBarra li a:hover {
+    color: #23CACA;
+}
+#menu {
+    display: none;
+}
+.menu-icono {
+    width: 250px;
+}
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+@media(max-width:991px) {
+    .menu {
+        padding: 30px;
+    }
+    .menu label {
+        display: initial;
+    }
+    .fondo {
+        padding: 47px 0;
+    }
+    .menu .navBarra {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #2b4ba1;
+        display: none;
+    }
+    .menu .navBarra li {
+        width: 100%;
+    }
+    #menu:checked ~ .navBarra {
+        display: initial;
+    }
+}
+
+.fondoFooter {
+    padding: 15px 0;
+    background-color: #2b4ba1;
+}
+footer .menu {
+    justify-content: center;
+}
+
+footer .navBarra {
+    display: flex;
+    gap: 20px; /* separa las opciones */
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}

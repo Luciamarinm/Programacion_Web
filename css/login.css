@@ -1,0 +1,47 @@
+.centrador {
+    height: 50vh;
+    display: flex;
+    justify-content: center; /* centro horizontal */
+    align-items: center;     /* centro vertical */
+  }
+  .form-width {
+   
+ 
+    
+    box-sizing: border-box;
+  }
+
+.login {
+    margin-top: 40px;
+   
+    margin-left: 20px;
+
+
+}
+  
+@media (min-width: 576px) {
+  .login {
+    margin-left: 200px;
+   
+  }
+}
+  
+@media (min-width: 708px) {
+  .login {
+    margin-left: 200px;
+
+  }
+}
+  
+@media (min-width: 1400px) {
+  .login {
+    margin-left: 300px;
+
+  }
+}
+@media (min-width: 1800px) {
+  .login {
+    margin-left: 300px;
+
+  }
+}
