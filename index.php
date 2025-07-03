@@ -2,20 +2,17 @@
 include_once 'Encabezado.php';
 include_once 'menu.php';
 include_once 'conexion.php';
-
 ?>
 <main class="contenido-principal">
 <main class="container">
     <section class="row">
     <section class="col">
-      
     </section>
     <section class="col-10">
         <h1 class="hInicio">Bienvenidos a Vetpet</h1>
         <h3 class="hInicio">Nuestro sueño es ayudarte a tí y a tu mascota.</h3>
         </section>
     <section class="col">
-   
     </section>
     </section>
     </main>
@@ -89,7 +86,6 @@ include_once 'conexion.php';
     </button>
     </section>
 </main>  
-
 <?php
 include_once 'footer.php';
 ?>

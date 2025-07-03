@@ -3,49 +3,55 @@ include_once 'Encabezado.php';
 include_once 'menu.php';
 include_once 'conexion.php';
 
-if(isset($_POST["submitCrearUser"])) { //Al clicar el botón lleva aquí
-  //Recoger los datos enviados del formulario
+if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {//Si no ha iniciado sesión redirige a index.php
+  header("Location: login.php");
+  exit();
+}
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {//Si no ha iniciado sesión como Admin redirige a index.php
+  header("Location: index.php");
+  exit();
+}
+
+if(isset($_POST["submitCrearUser"])) {//Al clicar el botón lleva aquí
+    //Valor de los inputs
   $nombre = mysqli_real_escape_string($conexion, $_POST['nombreCrearUser']);
   $apellidos = mysqli_real_escape_string($conexion, $_POST['apellidosCrearUser']);
   $telefono = mysqli_real_escape_string($conexion, $_POST['telefonoCrearUser']);
   $dni = mysqli_real_escape_string($conexion, $_POST['dniCrearUser']);
   $email = mysqli_real_escape_string($conexion, $_POST['emailCrearUser']);
   $password = mysqli_real_escape_string($conexion, $_POST['passCrearUser']);
-  $rol = "Cliente"; //Asígnamos el rol Cliente por defecto
-
-  //Compruebo que no hay un usuario con ese email
+  $rol = mysqli_real_escape_string($conexion, $_POST['rolUsuario']);
+  //Verifica si hay un usuario con ese email
   $sqlUsuario="SELECT idUsuario FROM usuarios WHERE email = '$email'";
   $resultadoUsuario = $conexion->query($sqlUsuario);
   $filas = $resultadoUsuario->num_rows;
-  if($filas > 0) { //Si ese email está en uso salta alert
+  if($filas > 0) { //Si ya existe salta alert
     echo "<script>
       alert('El usuario ya existe');
-      window.location = 'login.php';
+      window.location = 'gestion.php';
     </script>";
-  } else { //Si no se hace el insert para crear un nuevo usuario
-    //El id se asigna automatico desde la bd porque es autoincrementable
+  } else {//Si no existe se hace el insert
     $sqlNuevoUser = "INSERT INTO usuarios(email, pass, nombreUsuario, apellidosUsuario, telefono, DNI, rol) 
     VALUES ('$email', '$password', '$nombre', '$apellidos', '$telefono', '$dni', '$rol')";
     $resultadoUser = $conexion->query($sqlNuevoUser);
-    if ($resultadoUser) { //Si se ha creado correctamente salta alert
+    if ($resultadoUser) { //Si se crea con éxito te lleva a gestion.php
       echo "<script> 
       alert('Usuario creado con éxito');
-      window.location = 'login.php';
+      window.location = 'gestion.php';
       </script>";
-    } else { //Si no se ha creado correctamente salta otro alert
+    } else {//Si no te mantiene en la misma pagina
       echo "<script>
       alert('Error al crear el usuario');
-      window.location = 'crearCuenta.php';
+      window.location = 'crearNuevoUsuario.php';
       </script>";
     }
   }
 }
 ?>
 <main class="contenido-principal">
-  <section class="mx-extra">
-    <h1 class="hInicio">Crea tu cuenta</h1>
-    <h3 class="hInicio">Si ya tienes una cuenta clica <a href="login.php">aquí</a>.</h3>
-  </section>
+<section class="mx-extra">
+        <h1 class="hInicio">Crear usuario</h1>
+    </section>
   <section class="login">
     <!--Formulario: Action a la misma pagina-->
     <form class="row g-3 mx-extra" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
@@ -86,14 +92,25 @@ if(isset($_POST["submitCrearUser"])) { //Al clicar el botón lleva aquí
       </article>
       <!--Contaseña-->
       <article class="mb-3 row">
-        <label class="col-sm-2 col-form-label">Contaseña:</label >
-        <aside class="col-sm-6">
+          <label class="col-sm-2 col-form-label">Contaseña:</label >
+          <aside class="col-sm-6">
           <input type="password" class="form-control" name="passCrearUser" required>
-        </aside>
+          </aside>
       </article>
+      <!--rol-->
+      <article class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Rol:</label>
+          <aside class="col-sm-6">
+          <select name="rolUsuario" id="selectorRol" class="form-select" aria-label=" select example" required >
+          <option value="" disabled selected>-- Elige un rol --</option>
+              <option value="Cliente">Cliente</option>
+              <option value="Admin">Admin</option>
+            </select>
+          </aside>
+        </article>
       <!--Boton-->
       <article class="col-auto">
-        <button type="submit" name="submitCrearUser" class="btn btn-info mb-3" >Crear cuenta</button>
+        <button type="submit" name="submitCrearUser" class="btn btn-info mb-3" >Crear usuario</button>
       </article>
     </form>
   </section>

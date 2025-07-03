@@ -120,7 +120,7 @@ footer .menu {
 
 footer .navBarra {
     display: flex;
-    gap: 20px; /* separa las opciones */
+    gap: 20px; 
     align-items: center;
     justify-content: center;
     padding: 10px 0;

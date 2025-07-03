@@ -1,7 +1,7 @@
 <?php
-session_start();          // Inicia la sesión
-session_unset();          // Elimina todas las variables de sesión
-session_destroy();        // Destruye la sesión
-header("Location: index.php"); // Redirige al login (u otra página)
-exit();
+session_start(); //Inicia la sesión          
+session_unset(); //Elimina las viariables de la sesión actual   
+session_destroy(); //Destruye la sesión
+header("Location: index.php"); //Redirige a index.php
+exit(); //Termina la ejecución del script
 ?>

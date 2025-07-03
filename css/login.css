@@ -1,8 +1,8 @@
 .centrador {
     height: 50vh;
     display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;     /* centro vertical */
+    justify-content: center; 
+    align-items: center; 
   }
   .form-width {
    
